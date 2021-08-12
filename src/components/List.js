@@ -4,6 +4,7 @@ import Item from "./Item";
 import {Button,IconButton,TextField} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
+import {Redirect} from "react-router-dom"
 
 
 
@@ -14,6 +15,7 @@ function List(props){
     //initialising some state with an empty array, to keep track of the users list when we fetch it.
     const [userData,setUserData] = React.useState([]);
     const [inputValue,setInputValue] = React.useState("");
+    const [allowed,setAllowed] = React.useState(true);
 
     function handleDelete(id){
         console.log(id)
@@ -46,9 +48,11 @@ function List(props){
     React.useEffect(()=>{
 
         //makes a post request to the backend with the updated list with new items
-        axios.post("http://localhost:9000/add-item",{list:userData},{withCredentials:true})
-            .then(response=>console.log(response.data))
-            .catch(err=>console.log(err));
+        if(userData.length>0){
+            axios.post("http://localhost:9000/add-item",{list:userData},{withCredentials:true})
+                .then(response=>console.log(response.data))
+                .catch(err=>console.log(err));
+        }
 
     },[userData])
     
@@ -65,12 +69,17 @@ function List(props){
                 setUserData([...userData,...response.data.list]);
             }else{
                 console.log("error");
+                setAllowed(false);
             }
-        }).catch(error=>console.log(error))
+        }).catch(error=>{
+            console.log(error);
+            setAllowed(false)
+        })
     },[])
     return(
 
             <div class="container">
+                {!allowed&&<Redirect to={{pathname:"/"}}/>}
                 
                 {/* <Button onClick={logout} variant='contained' color="primary">logout</Button> */}
 
