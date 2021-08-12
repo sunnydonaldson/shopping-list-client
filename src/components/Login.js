@@ -15,7 +15,7 @@ function Login(){
         <div class="form">
             <form>
                 {/* runs the googleAuth function when clicked */}
-                <Button variant="contained" onClick={googleAuth}>Sign in with Google</Button>
+                <Button variant="outlined" color="inherit" onClick={googleAuth}>Sign in with Google</Button>
             
             </form>
         </div>

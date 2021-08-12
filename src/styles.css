@@ -39,7 +39,7 @@ p{
 
 .container{
     width:20rem;
-    /* min-height:20rem; */
+    
     display:flex;
     flex-direction:column;
     background: #fff;
@@ -82,9 +82,13 @@ p{
 .form{
     display:flex;
     flex-direction: column;
-    width:20rem;
-    height:20rem;
     text-align: center;
+    justify-content:center;
+    /* min-height:7rem;
+    min-width:21rem;
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #555; */
 }
 
 .form-item{

@@ -11,17 +11,28 @@ import {Redirect} from "react-router-dom"
 
 
 function List(props){
+
+    //sets whether the add button should be visible or not
     const[showButton,setShowButton] = React.useState(false);
+
     //initialising some state with an empty array, to keep track of the users list when we fetch it.
     const [userData,setUserData] = React.useState([]);
+
+    //keeps track of the value of the text input
     const [inputValue,setInputValue] = React.useState("");
+
+    //sets whether the user is authenticated, and allowed on the shopping list page
     const [allowed,setAllowed] = React.useState(true);
 
+    //gets passed as a prop into the Item component, and gets called when the user presses the delete button
     function handleDelete(id){
         console.log(id)
         setUserData(userData=>{
             let newArray = [...userData];
+
+            //removes the element at the chosen index
             newArray.splice(id,1);
+
             return newArray;
         })
     }
@@ -112,11 +123,11 @@ function List(props){
                     label="add items"
                     variant="filled"
                 />
-
+                {/* if showbutton is true, then show icon button */}
                 {showButton&& <IconButton color="primary" onClick={handleSubmit}><AddIcon/></IconButton> }
                 
             </form>
-            
+            {/* conditonal rendering. displays the delete button if userData contains any values */}
             {userData.length>0&&<Button onClick={()=>setUserData([])} variant="contained">delete list</Button>}
         </div>
 
