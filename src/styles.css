@@ -38,7 +38,7 @@ p{
 
 .container{
     width:20rem;
-    min-height:20rem;
+    /* min-height:20rem; */
     display:flex;
     flex-direction:column;
     background: #fff;
@@ -75,3 +75,26 @@ p{
     display:block;
 }
 
+.button{
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+
+.input {
+
+  width: 250px;
+  border-radius: 7px;
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  border:3rem;
+}
+
+.input-form{
+    width:100%;
+}
