@@ -19,6 +19,7 @@ h1{
 p{
     font-family: "Montserrat";
     color: #000;
+    display: inline;
 }
   
 
@@ -51,16 +52,31 @@ p{
 }
 
 .item{
-    border-top:1px solid;
+    
     width:100%;
     text-align: center;
+    display: inline;
 
+}
+
+.delete-button{
+    display:inline;
+    padding-left:3px;
+    margin-right:4rem;
+}
+
+.list-item{
+    text-align: left;
+    display:inline;
+    border-bottom:1px solid;
 }
 
 .top-item{
     border-top: 1px;
     width:100%;
     text-align:center;
+    display: inline;
+
 }
 
 .form{

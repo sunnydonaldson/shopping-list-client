@@ -14,6 +14,15 @@ function List(props){
     const [userData,setUserData] = React.useState([]);
     const [inputValue,setInputValue] = React.useState("");
 
+    function handleDelete(id){
+        console.log(id)
+        setUserData(userData=>{
+            let newArray = [...userData];
+            newArray.splice(id,1);
+            return newArray;
+        })
+    }
+
     //gets called every time the text input changes
     function handleChange(event){
         //sets the inputValue state to whatever the text input currently is
@@ -59,7 +68,7 @@ function List(props){
 
             {/*if there are elements in userData, then iterate through them, and map each element to an Item component.  */}
            {userData.length>0&&userData.map((item,index)=>{
-            return(<Item id={index} key={index}>{item}</Item>)
+            return(<Item delete={handleDelete} id={index} key={index}>{item}</Item>)
           })
 
           }
