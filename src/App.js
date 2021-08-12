@@ -1,45 +1,43 @@
-import logo from './logo.svg';
 import './styles.css';
-import React from "react";
-import axios from "axios";
-import Card from "@material-ui/core/Card";
-import Item from "./components/Item";
 import Login from "./components/Login";
+import List from "./components/List";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
-  const loggedIn = false;
-  const [test,setTest] = React.useState();
-  const [myValues,setMyValues] = React.useState(["cake","fruit","coins","saxophone","flour","bread","milk","jar","baby food","dog food","charger","pots","eggs"]);
-  const getData = ()=>{
-    axios.get("http://localhost:9000").then(response =>{
-    setTest(response.data.status);
-    console.log(response.data);
-
-  }).catch(error=> console.log("error"))
-
-
-  }
-
+  
 
   return (
     <div class="background">
-      <h1>Shopping List</h1>
-      <button onClick={getData}>testing</button>
-      <p>{test}</p>
+    <h1>Shopping List</h1>
+    {/* using react router to navigate to the /shoppint route, or root route. */}
+    <Router>
+      <Switch>
+        <Route path="/shopping">
+          {/* displays the custom List component I made */}
+          <List/>
+        </Route>
+        <Route path="/">
+          {/* displays the custom Login component I made */}
+          <Login/>
+        </Route>
+        
+        
+      </Switch>
+    </Router>
       
-      <div className="container">
-        {!loggedIn?<Login/>:
-        myValues.map((item,index)=>{
-          return(<Item id={index} key={index}>{item}</Item>)
-        })
-        }
+        
+        
+        
+        
+
+
+
       </div>
-      
-      
-
-
-
-    </div>
   );
 }
 
